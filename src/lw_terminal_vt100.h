@@ -29,6 +29,10 @@
 #include <pthread.h>
 #include "lw_terminal_parser.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Source : http://vt100.net/docs/vt100-ug/chapter3.html
             http://vt100.net/docs/tp83/appendixb.html
@@ -98,7 +102,11 @@ struct lw_terminal_vt100 *lw_terminal_vt100_init(void *user_data,
                                                            char *seq, char chr));
 char lw_terminal_vt100_get(struct lw_terminal_vt100 *vt100, unsigned int x, unsigned int y);
 const char **lw_terminal_vt100_getlines(struct lw_terminal_vt100 *vt100);
-void lw_terminal_vt100_destroy(struct lw_terminal_vt100 *this);
-void lw_terminal_vt100_read_str(struct lw_terminal_vt100 *this, char *buffer);
+void lw_terminal_vt100_destroy(struct lw_terminal_vt100 *p_this);
+void lw_terminal_vt100_read_str(struct lw_terminal_vt100 *p_this, char *buffer);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
